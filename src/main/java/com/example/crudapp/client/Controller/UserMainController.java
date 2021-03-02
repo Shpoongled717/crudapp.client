@@ -32,13 +32,13 @@ public class UserMainController {
         return "admin";
     }
 
-    @GetMapping(value = "/login")
+    @PostMapping(value = "/login")
     public String loginPage(HttpSession session, HttpServletRequest request) {
         session.setAttribute("email", request.getParameter("email"));
         return "login";
     }
 
-    @PostMapping(value = "/login")
+    @GetMapping(value = "/login")
     public String login() {
         return "login";
     }

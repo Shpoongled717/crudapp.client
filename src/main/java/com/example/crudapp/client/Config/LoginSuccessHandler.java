@@ -14,13 +14,18 @@ import java.io.IOException;
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
+    private final RoleService roleService;
+
     public LoginSuccessHandler(RoleService roleService) {
+        this.roleService = roleService;
     }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
                                         HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException {
+
+
         User user = (User) (authentication.getPrincipal());
         if (AuthorityUtils.authorityListToSet(authentication.getAuthorities())
                 .contains("ROLE_ADMIN")) {

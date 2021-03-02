@@ -39,4 +39,9 @@ public class UserRestController {
     public Boolean deleteUser(@PathVariable Long id) {
         return userService.delete(id);
     }
+
+    @GetMapping(value = "/users/get/{email}")
+    public User getUserByEmail(@RequestParam String email) {
+        return userService.getUserByName(email);
+    }
 }

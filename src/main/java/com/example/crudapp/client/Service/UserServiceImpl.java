@@ -47,11 +47,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByName(String username) {
+    public User getUserByName(String email) {
         final String uri = "http://localhost:8088/users/get/";
         restTemplate.getInterceptors().add(
                 new BasicAuthenticationInterceptor("admin", "admin"));
-        return restTemplate.getForObject(uri + username, User.class);
+        return restTemplate.getForObject(uri + email, User.class);
     }
 
     @Override
